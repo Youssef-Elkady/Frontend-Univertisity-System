@@ -123,9 +123,10 @@ public class LibrarianLogin extends javax.swing.JFrame implements LoginCredentia
         String lPassword = passwordField.getText();
         
         if(lUsername.equals(LIBRARIAN_USERNAME) && lPassword.equals(LIBRARIAN_PASSWORD)) {
-           this.setVisible(false);
             l.setParentNode(this);
             l.setVisible(true); 
+            this.setVisible(false);
+           
         } else {
             JOptionPane.showMessageDialog(null, "Wrong username or password!");
         }
