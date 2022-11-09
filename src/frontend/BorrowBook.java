@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import backend.LibrarianRole;
 import java.time.LocalDate;
+import javax.swing.JFrame;
 /**
  *
  * @author taver
@@ -50,7 +51,12 @@ public class BorrowBook extends javax.swing.JFrame implements Node {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(0, 204, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -157,11 +163,13 @@ public class BorrowBook extends javax.swing.JFrame implements Node {
     private void bookIdInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookIdInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bookIdInputActionPerformed
-
+public LocalDate convertToLocalDate(Date dateToConvert) {
+    return new java.sql.Date(dateToConvert.getTime()).toLocalDate();
+}
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         borrow_Date = jDateChooser1.getDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
+       // SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
         student_Id = studentIdInput.getText();
         book_Id = bookIdInput.getText();
         if( student_Id.isEmpty() || book_Id.isEmpty() || borrow_Date.equals(null) ){
@@ -169,12 +177,27 @@ public class BorrowBook extends javax.swing.JFrame implements Node {
             return;
         }//return 1
         LibrarianRole L1 = new LibrarianRole();
-     //   check_status = L1.borrowBook(student_Id, book_Id, (LocalDate)sdf;
-        
+        check_status = L1.borrowBook(student_Id, book_Id, convertToLocalDate(borrow_Date));
+        if (check_status == 1){
+            JOptionPane.showMessageDialog(null, " The student with Id " + student_Id + "has already borrowed a copy of the book with id = " + book_Id + " and hasn't returned it yet");
+            return;
+        }else if (check_status == 0 )
+        {
+            JOptionPane.showMessageDialog(null, " All copies of the book with id = " + book_Id + "have been borrowed and no copy is left for the student with id = " + student_Id); 
+        }else 
+        {
+          JOptionPane.showMessageDialog(null, " The student with id =  " + student_Id + " has successfully borrowed a copy of the book with id + " + book_Id);
+        }
         
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ((JFrame)getParentNode()).setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

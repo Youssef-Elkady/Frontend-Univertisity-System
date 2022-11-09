@@ -66,6 +66,11 @@ public class Librarian_Role extends javax.swing.JFrame implements Node {
         jButton2.setText("View Books");
 
         jButton3.setText("Borrow Book");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("View Borrowed Books");
 
@@ -138,6 +143,14 @@ public class Librarian_Role extends javax.swing.JFrame implements Node {
          this.setVisible(false);
         ((JFrame)getParentNode()).setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        BorrowBook b = new BorrowBook();
+            this.setVisible(false);
+            b.setParentNode(this);
+            b.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
