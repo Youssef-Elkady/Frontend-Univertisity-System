@@ -23,6 +23,7 @@ public class AddBook extends javax.swing.JFrame implements Node {
     private String bookID;
     private String title,publisher,authorName;
     private int numOfCopies;
+  //  public LibrarianRole L1 = new LibrarianRole();
 
     /**
      * This method is called from within the constructor to initialize the form.
