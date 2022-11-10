@@ -48,8 +48,8 @@ public class BorrowBook extends javax.swing.JFrame implements Node {
         jLabel1 = new javax.swing.JLabel();
         studentIdInput = new javax.swing.JTextField();
         bookIdInput = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -97,16 +97,10 @@ public class BorrowBook extends javax.swing.JFrame implements Node {
             }
         });
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 0, 0));
-        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jDateChooser1.setName("JDateChooser1"); // NOI18N
-
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Borrow");
-        jButton1.setActionCommand("Borrow");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -151,8 +145,6 @@ public class BorrowBook extends javax.swing.JFrame implements Node {
                 .addGap(56, 56, 56))
         );
 
-        jDateChooser1.getAccessibleContext().setAccessibleDescription("");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -169,25 +161,29 @@ public LocalDate convertToLocalDate(Date dateToConvert) {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         borrow_Date = jDateChooser1.getDate();
-       // SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
         student_Id = studentIdInput.getText();
         book_Id = bookIdInput.getText();
         if( student_Id.isEmpty() || book_Id.isEmpty() || borrow_Date.equals(null) ){
             JOptionPane.showMessageDialog(null, "Some fields are empty!");
             return;
-        }//return 1
+        }
         LibrarianRole L1 = new LibrarianRole();
-        check_status = L1.borrowBook(student_Id, book_Id, convertToLocalDate(borrow_Date));
-        if (check_status == 1){
+         try {check_status = L1.borrowBook(student_Id, book_Id, convertToLocalDate(borrow_Date));
+          if (check_status == 1){
             JOptionPane.showMessageDialog(null, " The student with Id " + student_Id + "has already borrowed a copy of the book with id = " + book_Id + " and hasn't returned it yet");
             return;
-        }else if (check_status == 0 )
+        }else if (check_status == 2 )
         {
-            JOptionPane.showMessageDialog(null, " All copies of the book with id = " + book_Id + "have been borrowed and no copy is left for the student with id = " + student_Id); 
-        }else 
-        {
-          JOptionPane.showMessageDialog(null, " The student with id =  " + student_Id + " has successfully borrowed a copy of the book with id + " + book_Id);
+          JOptionPane.showMessageDialog(null, " The student with id =  " + student_Id + " has successfully borrowed a copy of the book with id = " + book_Id);
+        }else if (check_status == 0){
+            JOptionPane.showMessageDialog(null, " All copies of the book with id = " + book_Id + "have been borrowed and no copy is left for the student with id = " + student_Id);
+
         }
+         
+         }catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, " All copies of the book with id = " + book_Id + "have been borrowed and no copy is left for the student with id = " + student_Id);
+         }
+       
         
         
         

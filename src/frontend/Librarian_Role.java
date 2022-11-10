@@ -146,10 +146,10 @@ public class Librarian_Role extends javax.swing.JFrame implements Node {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        BorrowBook b = new BorrowBook();
+            BorrowBook b1 = new BorrowBook();
             this.setVisible(false);
-            b.setParentNode(this);
-            b.setVisible(true);
+            b1.setParentNode(this);
+            b1.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
