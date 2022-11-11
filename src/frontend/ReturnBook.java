@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frontend;
-import backend.StudentBook;
 import backend.LibrarianRole;
 import java.time.LocalDate;
 import java.util.Date;
@@ -49,13 +48,13 @@ public class ReturnBook extends javax.swing.JFrame implements Node {
         ReturnDateInput = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Return Book");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
 
-        StudentIDTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         StudentIDTextField.setOpaque(true);
         StudentIDTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +138,7 @@ public class ReturnBook extends javax.swing.JFrame implements Node {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public LocalDate convertToLocalDate(Date dateToConvert) {
+    public LocalDate convertToLocalDate(Date dateToConvert) { // function that converts Date data type into LocalDate data type using SQL method
         return new java.sql.Date(dateToConvert.getTime()).toLocalDate();
     }
     private void ReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnButtonActionPerformed
@@ -149,7 +148,7 @@ public class ReturnBook extends javax.swing.JFrame implements Node {
         Date bReturnDate = ReturnDateInput.getDate();
         double checkStatus;
 
-        if (bStudentID.equals("")|| bBookID.equals("")|| bReturnDate == null) {
+        if (bStudentID.equals("")|| bBookID.equals("")|| bReturnDate == null) { // checking if any field is empty
             JOptionPane.showMessageDialog(null, "Some fields are empty!");
             return;
         }
@@ -157,13 +156,11 @@ public class ReturnBook extends javax.swing.JFrame implements Node {
 
         try {
             checkStatus = librarian.returnBook(bStudentID, bBookID, convertToLocalDate(bReturnDate));
+            //checks if borrowing operations increased or not to determine whether a new borrwing operation occured
             if (oldOperation == librarian.getListOfBorrowingOperations().length){
-                JOptionPane.showMessageDialog(null, " Currently no borrowing operation is occuring by this student for this book");
-                StudentIDTextField.setText("");
-                BookIDTextField.setText("");
-                ReturnDateInput.setDate(null);
+                JOptionPane.showMessageDialog(null, " Currently no borrowing operation is occuring by this student for this book");             
                 return;
-            }
+            } 
             StudentIDTextField.setText("");
             BookIDTextField.setText("");
             ReturnDateInput.setDate(null);
@@ -171,10 +168,8 @@ public class ReturnBook extends javax.swing.JFrame implements Node {
 
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, " Currently no borrowing operation is occuring by this student for this book");
-            StudentIDTextField.setText("");
-            BookIDTextField.setText("");
-            ReturnDateInput.setDate(null);
-        }
+            
+        } 
 
     }//GEN-LAST:event_ReturnButtonActionPerformed
 

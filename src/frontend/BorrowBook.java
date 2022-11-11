@@ -50,6 +50,7 @@ public class BorrowBook extends javax.swing.JFrame implements Node {
         BorrowDateInput = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Borrow Book");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -172,16 +173,15 @@ public class BorrowBook extends javax.swing.JFrame implements Node {
                     JOptionPane.showMessageDialog(null, " The student with Id = " + bStudentID + " has already borrowed a copy of the book with ID = " + bBookID + " and hasn't returned it yet.");
                     break;
                 case 2:
+
+                    JOptionPane.showMessageDialog(null, " The student with ID =  " + bStudentID + " has successfully borrowed a copy of the book with ID = " + bBookID);
                     StudentIDTextField.setText("");
                     BookIDTextField.setText("");
                     BorrowDateInput.setDate(null);
-                    JOptionPane.showMessageDialog(null, " The student with ID =  " + bStudentID + " has successfully borrowed a copy of the book with ID = " + bBookID);
                     break;
                 case 0:
                     JOptionPane.showMessageDialog(null, " All copies of the book with ID = " + bBookID + " have been borrowed and no copy is left for the student with ID = " + bStudentID);
-                    StudentIDTextField.setText("");
-                    BookIDTextField.setText("");
-                    BorrowDateInput.setDate(null);
+                    
                     break;
                 default:
                     break;
