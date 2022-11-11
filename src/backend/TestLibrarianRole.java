@@ -6,7 +6,7 @@ package backend;
 
 import java.time.LocalDate;
 
-public class TestLibrarianRole {
+class TestLibrarianRole {
 
     public static void printTheBorrowingResult(int result, String studentId, String bookId) {
         switch (result) {

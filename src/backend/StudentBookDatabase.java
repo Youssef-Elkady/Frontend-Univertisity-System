@@ -3,7 +3,7 @@ package backend;
 
 import java.time.LocalDate;
 
-public class StudentBookDatabase extends Database {
+class StudentBookDatabase extends Database {
 
     public StudentBookDatabase(String filename) {
         super.setFilename(filename);

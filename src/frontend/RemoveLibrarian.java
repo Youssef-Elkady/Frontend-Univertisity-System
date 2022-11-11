@@ -2,14 +2,19 @@ package frontend;
 
 import backend.AdminRole;
 import backend.LibrarianUser;
-import backend.LibrarianUserDatabase;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class RemoveLibrarian extends javax.swing.JFrame implements Node {
 
+    AdminRole admin;
     private Node parent;
 
+    public RemoveLibrarian(AdminRole admin) {
+        initComponents();
+        this.admin = admin;
+    }
+    
     @Override
     public Node getParentNode() {
         return parent;
@@ -20,9 +25,7 @@ public class RemoveLibrarian extends javax.swing.JFrame implements Node {
         this.parent = node;
     }
     
-    public RemoveLibrarian() {
-        initComponents();
-    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -101,7 +104,7 @@ public class RemoveLibrarian extends javax.swing.JFrame implements Node {
     }//GEN-LAST:event_librarianIDTextFieldActionPerformed
 
     private void RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveActionPerformed
-        AdminRole admin = new AdminRole();
+        
         String lID = librarianIDTextField.getText();
         boolean flag = false;
         LibrarianUser[] librarians = admin.getListOfLibrarians();
@@ -112,27 +115,12 @@ public class RemoveLibrarian extends javax.swing.JFrame implements Node {
             }
         }
         if(!flag) 
-            JOptionPane.showMessageDialog(null, "The librarian with id = " + lID + " username doesn't exist!");
+            JOptionPane.showMessageDialog(null, "The librarian with ID = " + lID + " username doesn't exist!");
         else {
             admin.removeLibrarian(lID);
             librarianIDTextField.setText("");
-            JOptionPane.showMessageDialog(null, "The librarian with id = " + lID + " has been deleted.");
+            JOptionPane.showMessageDialog(null, "The librarian with ID = " + lID + " has been deleted.");
         }
-//        
-//        
-//        for (int i = 0; i < admin.getListOfLibrarians().length; i++) {            
-//           String librarianId;
-//            librarianId = ((LibrarianUser)(admin.getListOfLibrarians[i])).getLibrarianId();
-//            if (librarianId ==lID) {
-//                flag = true;
-//                admin.removeLibrarian(lID);
-//                JOptionPane.showMessageDialog(null, "The Librarian with ID= " + lID + " has been deleted");
-//                break;
-//            }
-//        }
-//        if (flag == false) {
-//            JOptionPane.showMessageDialog(null, "The Librarian with ID= " + ID + " already exists");
-//        }
 
     }//GEN-LAST:event_RemoveActionPerformed
 
@@ -142,37 +130,6 @@ public class RemoveLibrarian extends javax.swing.JFrame implements Node {
         ((JFrame) getParentNode()).setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(RemoveLibrarian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(RemoveLibrarian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(RemoveLibrarian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(RemoveLibrarian.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new RemoveLibrarian().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LibrarianID;

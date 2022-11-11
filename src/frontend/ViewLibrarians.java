@@ -4,11 +4,10 @@ import backend.AdminRole;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import backend.LibrarianUser;
-import java.util.ArrayList;
 
 public class ViewLibrarians extends javax.swing.JFrame implements Node {
 
-    AdminRole admin = new AdminRole();
+    AdminRole admin;
     private Node parent;
 
     @Override
@@ -21,8 +20,9 @@ public class ViewLibrarians extends javax.swing.JFrame implements Node {
         this.parent = node;
     }
     
-    public ViewLibrarians() {
+    public ViewLibrarians(AdminRole admin) {
         initComponents();
+        this.admin = admin;
         DefaultTableModel m = (DefaultTableModel) LibrariansTable.getModel();
         LibrarianUser[] librarians = admin.getListOfLibrarians();
         for(LibrarianUser cpy : librarians) {

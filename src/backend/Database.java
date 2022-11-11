@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class Database {
+abstract class Database {
 
     private ArrayList<RecordType> records = new ArrayList<>();
     private String filename;

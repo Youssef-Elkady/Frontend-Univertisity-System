@@ -9,15 +9,17 @@ import backend.LibrarianRole;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class AddBook extends javax.swing.JFrame implements Node{
+public class AddBook extends javax.swing.JFrame implements Node {
 
     /**
      * Creates new form AddBook
      */
-    public AddBook() {
+    public AddBook(LibrarianRole librarian) {
         initComponents();
+        this.librarian = librarian;
     }
-    
+
+    LibrarianRole librarian;
     private Node parent;
 
     @Override
@@ -185,77 +187,44 @@ public class AddBook extends javax.swing.JFrame implements Node{
         String bAuthorName = AuthorNameTextField.getText();
         String bPublisher = PublisherTextField.getText();
         String bNoOfCopies = NoOfCopiesTextField.getText();
-        
-        if(bID.equals("") || bTitle.equals("") || bAuthorName.equals("") || bPublisher.equals("") || bNoOfCopies.equals("")) {
+
+        if (bID.equals("") || bTitle.equals("") || bAuthorName.equals("") || bPublisher.equals("") || bNoOfCopies.equals("")) {
             JOptionPane.showMessageDialog(null, "Some fields are empty");
         } else {
-            
-            try 
-	{ 
-           int numOfCopies = Integer.parseInt(bNoOfCopies);                                
-           LibrarianRole librarian = new LibrarianRole();
-           Book[] books = librarian.getListOfBooks();
-           
-           librarian.addBook(bID, bTitle, bAuthorName, bPublisher, numOfCopies);
-           if(books.length == librarian.getListOfBooks().length){//...........................................................
-               JOptionPane.showMessageDialog(null, "The book with ID " + bID + " already exists");
-           }else{
-               BookIDTextField.setText("");
-               TitleTextField.setText("");
-               AuthorNameTextField.setText("");
-               PublisherTextField.setText("");
-               NoOfCopiesTextField.setText("");
-               JOptionPane.showMessageDialog(null, "The book with ID "+ bID + " has been successfully added");
-           }
-	}  
-	catch (NumberFormatException e)  
-	{ 
-        JOptionPane.showMessageDialog(null, " You should enter a numeric value in the field whose name is Num of Copies " );
+
+            try {
+                int numOfCopies = Integer.parseInt(bNoOfCopies);
+
+                Book[] books = librarian.getListOfBooks();
+
+                librarian.addBook(bID, bTitle, bAuthorName, bPublisher, numOfCopies);
+                if (books.length == librarian.getListOfBooks().length) {
+                    JOptionPane.showMessageDialog(null, "The book with ID = " + bID + " already exists!");
+                } else {
+                    BookIDTextField.setText("");
+                    TitleTextField.setText("");
+                    AuthorNameTextField.setText("");
+                    PublisherTextField.setText("");
+                    NoOfCopiesTextField.setText("");
+                    JOptionPane.showMessageDialog(null, "The book with ID = " + bID + " has been successfully added.");
+                }
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(null, " You should enter a numeric value in the field whose name is 'No of Copies' ");
+            }
         }
-        }
-        
+
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         this.setVisible(false);
-        ((JFrame)getParentNode()).setVisible(true);
+        ((JFrame) getParentNode()).setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(AddBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(AddBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(AddBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(AddBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new AddBook().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;

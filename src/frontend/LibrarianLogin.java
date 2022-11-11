@@ -42,7 +42,11 @@ public class LibrarianLogin extends javax.swing.JFrame implements LoginCredentia
             }
         });
 
-        passwordField.setText("56789");
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -65,8 +69,6 @@ public class LibrarianLogin extends javax.swing.JFrame implements LoginCredentia
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Password");
         jLabel2.setOpaque(true);
-
-        usernameTextField.setText("librarian");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,12 +123,12 @@ public class LibrarianLogin extends javax.swing.JFrame implements LoginCredentia
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String lUsername = usernameTextField.getText();
-        String lPassword = passwordField.getText();//...................................
+        String lPassword = new String(passwordField.getPassword());
 
         if (lUsername.equals(LIBRARIAN_USERNAME) && lPassword.equals(LIBRARIAN_PASSWORD)) {
             this.setVisible(false);
             LibrarianRoleFE l = new LibrarianRoleFE();
-            l.setParentNode(this);
+            l.setParentNode(this.parent);
             l.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Wrong username or password!");
@@ -137,44 +139,16 @@ public class LibrarianLogin extends javax.swing.JFrame implements LoginCredentia
         // TODO add your handling code here:
         this.setVisible(false);
         ((JFrame) getParentNode()).setVisible(true);
-//        LibrarySystem firstWindow = new LibrarySystem();
-//        firstWindow.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(LibrarianLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(LibrarianLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(LibrarianLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(LibrarianLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new LibrarianLogin().setVisible(true);
-//            }
-//        });
-//    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -1,7 +1,7 @@
 package backend;
 
 
-public class BookDatabase extends Database {
+ class BookDatabase extends Database {
 
     public BookDatabase(String filename) {
         super.setFilename(filename);

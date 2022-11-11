@@ -1,6 +1,6 @@
 
 package backend;
-public interface RecordType {
+interface RecordType {
 
     public abstract String lineRepresentation();
 

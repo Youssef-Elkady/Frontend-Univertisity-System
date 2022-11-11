@@ -23,7 +23,7 @@ public class AdminRole implements FileNames{
         } else if (librarianId.startsWith("L")) {
             LibrarianUser user = new LibrarianUser(librarianId, name, email, address, phoneNumber);
             database.insertRecord(user);
-            database.saveToFile();//................................................................................
+            //database.saveToFile();
         } else {
             System.err.println("Incorrect librarianID format!");
         }
@@ -36,7 +36,7 @@ public class AdminRole implements FileNames{
 
     public void removeLibrarian(String key) {
         database.deleteRecord(key);
-        database.saveToFile();//...................................................................
+        //database.saveToFile();
     }
 
     public void logout() {

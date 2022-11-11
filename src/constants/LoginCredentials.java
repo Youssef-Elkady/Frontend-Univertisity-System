@@ -4,10 +4,6 @@
  */
 package constants;
 
-/**
- *
- * @author farida
- */
 public interface LoginCredentials {
     String ADMIN_USERNAME = "admin";
     String ADMIN_PASSWORD = "12345";

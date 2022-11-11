@@ -4,10 +4,6 @@
  */
 package constants;
 
-/**
- *
- * @author farida
- */
 public interface FileNames {
     String BOOKS_FILENAME = "Books.txt";
     String LIBRARIANS_FILENAME = "Librarians.txt";

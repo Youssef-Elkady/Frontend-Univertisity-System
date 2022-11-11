@@ -1,11 +1,11 @@
 package frontend;
 
 import backend.AdminRole;
-import backend.LibrarianUser;
 import javax.swing.JFrame;
 
 public class AdminRoleFE extends javax.swing.JFrame implements Node {
-    
+
+    AdminRole admin = new AdminRole();//create an object only once!
     private Node parent;
 
     /**
@@ -14,17 +14,17 @@ public class AdminRoleFE extends javax.swing.JFrame implements Node {
     public AdminRoleFE() {
         initComponents();
     }
-    
+
     @Override
     public Node getParentNode() {
         return parent;
     }
-    
+
     @Override
     public void setParentNode(Node node) {
         this.parent = node;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -117,76 +117,41 @@ public class AdminRoleFE extends javax.swing.JFrame implements Node {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddLibrarianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddLibrarianActionPerformed
-        AddLibrarian aL = new AddLibrarian();
+        AddLibrarian aL = new AddLibrarian(admin);
         aL.setParentNode(this);
         aL.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AddLibrarianActionPerformed
-    
+
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-//        this.setVisible(false);
-//        ((JFrame) getParentNode()).setVisible(true);
+
     }//GEN-LAST:event_formWindowClosing
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
-        AdminRole admin = new AdminRole();
-        admin.logout();       //for saving
+        admin.logout();
         this.setVisible(false);
-        LibrarySystem ls = new LibrarySystem();
-        ls.setVisible(true);
-        //((JFrame) getParentNode()).setVisible(true);
-        
+        ((JFrame) getParentNode()).setVisible(true);
+
     }//GEN-LAST:event_LogoutActionPerformed
 
     private void RemoveLibrariansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveLibrariansActionPerformed
-        RemoveLibrarian rL = new RemoveLibrarian();
+        RemoveLibrarian rL = new RemoveLibrarian(admin);
         rL.setParentNode(this);
         rL.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RemoveLibrariansActionPerformed
 
     private void ViewLibrariansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewLibrariansActionPerformed
-        ViewLibrarians vL = new ViewLibrarians();
+        ViewLibrarians vL = new ViewLibrarians(admin);
         vL.setParentNode(this);
         vL.setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_ViewLibrariansActionPerformed
 
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(AdminRole.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(AdminRole.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(AdminRole.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(AdminRole.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Admin_Role().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddLibrarian;

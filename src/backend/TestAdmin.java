@@ -4,7 +4,7 @@
  */
 package backend;
 
-public class TestAdmin {
+class TestAdmin {
 
     public static void test1() {
         AdminRole admin = new AdminRole();

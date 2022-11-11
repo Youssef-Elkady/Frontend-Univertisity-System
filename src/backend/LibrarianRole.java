@@ -43,7 +43,7 @@ public class LibrarianRole implements FileNames{
             System.err.println("Incorrect bookID format!");
             return;
         }
-        logout();
+       // logout();
     }
 
     public Book[] getListOfBooks() {
@@ -76,7 +76,7 @@ public class LibrarianRole implements FileNames{
         StudentBook borrowed = new StudentBook(studentID, bookID, borrowDate);
         sBDatabase.insertRecord(borrowed);
        
-        logout();
+       // logout();
         return 2;
     }
 
@@ -93,7 +93,7 @@ public class LibrarianRole implements FileNames{
 
             sBDatabase.deleteRecord(studentId + "," + bookId);
 
-            logout();
+          //  logout();
 
             return getLateFee(days);
         } else {

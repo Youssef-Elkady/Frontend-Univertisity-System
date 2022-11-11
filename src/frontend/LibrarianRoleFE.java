@@ -7,10 +7,6 @@ package frontend;
 import backend.LibrarianRole;
 import javax.swing.JFrame;
 
-/**
- *
- * @author taver
- */
 public class LibrarianRoleFE extends javax.swing.JFrame implements Node {
 
     /**
@@ -20,6 +16,7 @@ public class LibrarianRoleFE extends javax.swing.JFrame implements Node {
         initComponents();
     }
 
+    LibrarianRole librarian = new LibrarianRole();
     private Node parent;
 
     @Override
@@ -162,7 +159,7 @@ public class LibrarianRoleFE extends javax.swing.JFrame implements Node {
     }//GEN-LAST:event_formWindowClosing
 
     private void ViewBorrowedBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewBorrowedBooksActionPerformed
-        ViewBorrowedBooks vBB = new ViewBorrowedBooks();
+        ViewBorrowedBooks vBB = new ViewBorrowedBooks(librarian);
         vBB.setParentNode(this);
         vBB.setVisible(true);
         this.setVisible(false);
@@ -170,32 +167,30 @@ public class LibrarianRoleFE extends javax.swing.JFrame implements Node {
 
     private void BorrowBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrowBookActionPerformed
         // TODO add your handling code here:
-            BorrowBook b1 = new BorrowBook();
+        BorrowBook bB = new BorrowBook(librarian);
+            bB.setParentNode(this);
+            bB.setVisible(true);
             this.setVisible(false);
-            b1.setParentNode(this);
-            b1.setVisible(true);
     }//GEN-LAST:event_BorrowBookActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
-        // TODO add your handling code here:
-        LibrarianRole librarian = new LibrarianRole();
-        librarian.logout();       //for saving
+        // TODO add your handling code here:      
+        librarian.logout();
         this.setVisible(false);
-        LibrarySystem ls = new LibrarySystem();
-        ls.setVisible(true);
+        ((JFrame) getParentNode()).setVisible(true);
     }//GEN-LAST:event_LogoutActionPerformed
 
     private void ReturnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnBookActionPerformed
         // TODO add your handling code here:
-            ReturnBook b1 = new ReturnBook();
-            this.setVisible(false);
-            b1.setParentNode(this);
-            b1.setVisible(true);
+        ReturnBook rB = new ReturnBook(librarian);
+        rB.setParentNode(this);
+        rB.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_ReturnBookActionPerformed
 
     private void AddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBookActionPerformed
         // TODO add your handling code here:
-        AddBook aB = new AddBook();
+        AddBook aB = new AddBook(librarian);
         aB.setParentNode(this);
         aB.setVisible(true);
         this.setVisible(false);
@@ -203,7 +198,7 @@ public class LibrarianRoleFE extends javax.swing.JFrame implements Node {
 
     private void ViewBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewBooksActionPerformed
         // TODO add your handling code here:
-        ViewBooks vB = new ViewBooks();
+        ViewBooks vB = new ViewBooks(librarian);
         vB.setParentNode(this);
         vB.setVisible(true);
         this.setVisible(false);
@@ -212,37 +207,7 @@ public class LibrarianRoleFE extends javax.swing.JFrame implements Node {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(LibrarianRole.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(LibrarianRole.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(LibrarianRole.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(LibrarianRole.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new LibrarianRole().setVisible(true);
-//            }
-//        });
-//    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBook;
