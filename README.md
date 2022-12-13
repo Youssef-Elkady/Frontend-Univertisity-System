@@ -21,4 +21,4 @@
 7: Calculate the borrowing fee the student must pay when returning the book  
 8: Save all new Data to a file  
   
-### All inputted data are Validated
+### Validations Occur on all inputted data
