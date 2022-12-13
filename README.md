@@ -1,7 +1,7 @@
 # Univertisity-Library-System  
 ### Calendar Jar file must be added to be able to access date related features.  
   
-### Library System with and Interactive User Interface done using JAVA swing  
+### Library System with and Interactive User Interface created using JAVA swing  
   
 ### All file names and login data and saved in a seperate package named constants  
    
